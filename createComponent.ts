@@ -1,13 +1,24 @@
 import process from "process";
 import fs from "fs";
 import path from "path";
+import { resolveParameters } from "./separateParameters";
 
 const componentName = process.argv[2];
 const location = process.argv[3] ? process.argv[3] : ".";
+const params = process.argv.slice(location ? 4 : 3);
+const paramsResolved = resolveParameters(params);
 const fullPath = path.join(location, componentName);
 const stylesName = "styles";
-// const fileExtension = process.arv[4] === "js" ? "js" : "ts";
-const fileExtension = "ts";
+let fileExtension = "ts";
+
+// validate params
+paramsResolved.forEach((p: any) => {
+  if ("-e" || "--e" || "--extension" || "-extension" in p) {
+    fileExtension = p[Object.keys(p)[0]];
+  } else {
+    throw new Error(`Invalid parameter ${p}`);
+  }
+});
 
 console.log(`Creating Component ${componentName} at ${location}`);
 
@@ -21,16 +32,15 @@ const componentStream = fs.createWriteStream(
   `${fullPath}/${componentName}.${fileExtension}x`
 );
 componentStream.write(
-  `import react, { FC } from "react";
-import * from "./${stylesName}";
+  `import react${fileExtension === "ts" ? ", { FC } " : " "}from "react";
   
-    export const ${componentName}:FC = () => {
-        return (
-            <>
+export const ${componentName}${fileExtension === "ts" ? ": FC " : " "}= () => {
+    return (
+        <>
 
-            </>
-        )
-    }`
+        </>
+    )
+};`
 );
 componentStream.close();
 
@@ -38,12 +48,12 @@ componentStream.close();
 const stylesStream = fs.createWriteStream(
   `${fullPath}/${stylesName}.${fileExtension}`
 );
-stylesStream.write(`import styled from "styled-components"
+stylesStream.write(`import styled from "styled-components";
 
 `);
 stylesStream.close();
 
 // write index.ts
 const indexStream = fs.createWriteStream(`${fullPath}/index.${fileExtension}`);
-indexStream.write(`export * from "./${componentName};`);
+indexStream.write(`export * from "./${componentName}";`);
 indexStream.close();
