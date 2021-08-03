@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jakobgetz/react-util/issues"
   },
-  "homepage": "https://github.com/jakobgetz/react-util#readme"
+  "homepage": "https://github.com/jakobgetz/react-util#readme",
+  "devDependencies": {
+    "@types/node": "^16.4.10"
+  }
 }
