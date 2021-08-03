@@ -1,0 +1,24 @@
+{
+  "name": "react-util",
+  "version": "1.0.0",
+  "description": "utility scripts for react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakobgetz/react-util.git"
+  },
+  "keywords": [
+    "utility",
+    "react",
+    "script"
+  ],
+  "author": "Jakob Getz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakobgetz/react-util/issues"
+  },
+  "homepage": "https://github.com/jakobgetz/react-util#readme"
+}
