@@ -2,3 +2,4 @@
 .DS_Store
 /Component
 dist
+/tests/gen

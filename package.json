@@ -4,7 +4,9 @@
   "description": "utility scripts for react",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "npm run build-ts",
+    "build-ts": "tsc"
   },
   "repository": {
     "type": "git",

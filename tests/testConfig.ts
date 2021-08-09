@@ -1,3 +1,3 @@
 export const testConfig = {
-    scriptLocation: "../"
+    scriptLocation: "./dist/"
 }
