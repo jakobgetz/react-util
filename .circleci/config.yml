@@ -17,7 +17,7 @@ jobs:
         - run:
             name: Run build
             command: npm run build
-  test:
+  - test:
       docker:
         - image: cimg/node:16.4.0
       steps:
