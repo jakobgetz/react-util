@@ -4,50 +4,20 @@ orbs:
   node: circleci/node@4.1
 
 jobs:
-  install:
-    docker:
-      - image: cimg/node:16.4.0
-    steps:
-      - checkout
-      - node/install-packages
   build:
     docker:
       - image: cimg/node:16.4.0
     steps:
-      # - checkout
-      - run:
-          name: Run build
-          command: npm run build
-  test:
-    docker:
-      - image: cimg/node:16.4.0
-    steps:
       - checkout
       - node/install-packages
       - run:
-          name: Run Test
+          name: Run build
+          command: npm run build
+      - run:
+          name: Run test
           command: npm run test
-  # build:
-  #   docker:
-  #     - image: cimg/node:16.4.0
-  #   steps:
-  #     - checkout
-  #     - node/install-packages
-  #     - run:
-  #         name: Run build
-  #         command: npm run build
-  #     - run:
-  #         name: Run test
-  #         command: npm run test
 
 workflows:
   build:
     jobs:
-      - install
-      - build:
-          requires:
-            - install
-      - test:
-          requires:
-            - build
-      # - build
+      - build
