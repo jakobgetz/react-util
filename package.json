@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "npm run build-ts",
-    "build-ts": "tsc"
+    "build-ts": "npx tsc"
   },
   "repository": {
     "type": "git",
