@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-      - npm install typescript
   build:
     docker:
       - image: cimg/node:16.4.0
