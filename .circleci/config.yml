@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.1
-  typescript: vidsy/typescript@1.2.0
 
 jobs:
   install:
@@ -11,6 +10,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages
+      - npm install --no-save typescript
   build:
     docker:
       - image: cimg/node:16.4.0
