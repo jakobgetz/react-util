@@ -1,3 +1,4 @@
 export const testConfig = {
-    scriptLocation: "./dist/"
+    scriptLocation: "./dist/",
+    gen: "./tests/gen/"
 }

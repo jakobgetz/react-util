@@ -4,9 +4,9 @@ import path from "path";
 import { resolveParameters } from "./separateParameters";
 
 const componentName = process.argv[2];
-const location = process.argv[3] ? process.argv[3] : ".";
-const params = process.argv.slice(location ? 4 : 3);
-const paramsResolved = resolveParameters(params);
+const location =
+  process.argv[3] && !process.argv[3].startsWith("-") ? process.argv[3] : ".";
+const paramsResolved = resolveParameters(process.argv);
 const fullPath = path.join(location, componentName);
 const stylesName = "styles";
 let fileExtension = "ts";

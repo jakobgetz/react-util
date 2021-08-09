@@ -1,6 +1,9 @@
 export const resolveParameters = (params: string[]): object[] => {
   const records: object[] = [];
   let i = 0;
+  // skip all unnamed params
+  while (i < params.length && !params[i].startsWith("-")) i++;
+
   while (i < params.length) {
     if (params[i].startsWith("-") && i < params.length - 1) {
       records.push({ [params[i]]: params[i + 1] });
