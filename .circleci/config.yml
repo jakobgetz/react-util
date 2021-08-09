@@ -23,6 +23,7 @@ jobs:
       - image: cimg/node:16.4.0
     steps:
       - checkout
+      - node/install-packages
       - run:
           name: Run Test
           command: npm run test
