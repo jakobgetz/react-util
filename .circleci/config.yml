@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.1
+  typescript: vidsy/typescript@1.2.0
 
 jobs:
   install:
