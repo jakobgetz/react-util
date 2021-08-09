@@ -4,7 +4,7 @@
   "description": "utility scripts for react",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "npx jest",
     "build": "npm run build-ts",
     "build-ts": "npx tsc"
   },
